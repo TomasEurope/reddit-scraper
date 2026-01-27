@@ -1,0 +1,9 @@
+framework:
+    messenger:
+        transports:
+            async: '%env(MESSENGER_TRANSPORT_DSN)%'
+            # Define failed transport with its own DSN. Avoid query param like ?queue_name for AMQP.
+            failed: '%env(MESSENGER_FAILED_DSN)%'
+        failure_transport: failed
+        routing:
+            App\Message\RedditPayloadMessage: async

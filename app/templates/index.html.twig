@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit Posts from OpenSearch</title>
+    {{ encore_entry_link_tags('app') }}
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+    <div id="app"
+         data-posts="{{ posts|json_encode|e('html_attr') }}"
+         data-total="{{ total|default(0) }}"
+         data-total-pages="{{ totalPages|default(1) }}"
+         data-page="{{ page|default(1) }}"
+         data-asset-path="{{ asset('') }}">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="text-2xl font-semibold text-gray-600 animate-pulse">Loading Reddit Gifs...</div>
+        </div>
+    </div>
+    {{ encore_entry_script_tags('app') }}
+</body>
+</html>
