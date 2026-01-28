@@ -2,11 +2,11 @@
 
 A simple PHP-based Reddit scraper with a user interface, built using Symfony. It fetches media posts from Reddit, processes them, and stores them in OpenSearch for easy searching and viewing.
 
-It's mostly vibe coded with Junie by JetBrains.
+**It's mostly vibe coded with Junie by JetBrains.**
 
 ## Features
 
-- Scrapes Reddit for MP4 and GIF media posts.
+- Scrapes Reddit for MP4 media posts.
 - Uses RabbitMQ for asynchronous processing of posts.
 - Stores post data in OpenSearch.
 - Web UI for browsing and searching scraped posts.
