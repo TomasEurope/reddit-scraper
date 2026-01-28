@@ -72,6 +72,7 @@ perm:
 install:
 	printf "\nStarting install :)\n\n"
 	sleep 3
+	mkdir ./data/postgres/data
 	make down
 	make up
 	docker exec reddit-php composer install
