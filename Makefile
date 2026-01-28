@@ -61,7 +61,7 @@ cache-clear:
 	docker exec reddit-php php bin/console cache:clear
 
 migrate:
-	docker exec reddit-php php bin/console doctrine:migrations:migrate
+	docker exec reddit-php php bin/console doctrine:migrations:migrate --no-interaction
 
 consume:
 	docker exec reddit-php php bin/console messenger:consume async -vv
@@ -72,13 +72,13 @@ perm:
 install:
 	printf "\nStarting install :)\n\n"
 	sleep 3
-	mkdir ./data/postgres/data
+	mkdir -p ./data/postgres/data
 	make down
 	make up
 	docker exec reddit-php composer install
 	cd ./app && npm install
-	cd ./app && npm run dev
-	docker exec reddit-php php bin/console doctrine:migrations:migrate --no-interaction
+	make dev
+	make migrate
 	printf "\n\nWaititng 60 seconds for Opensearch...\n\n"
 	sleep 60
 	docker exec reddit-php ./bin/console app:reddit:fetch-mp4 --pages 10 --debug
